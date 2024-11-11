@@ -8,12 +8,12 @@ export const authOptions: NextAuthOptions = ({
   providers: [
     // OAuth authentication providers...
     AppleProvider({
-      clientId: process.env.APPLE_ID,
-      clientSecret: process.env.APPLE_SECRET
+      clientId: process.env.APPLE_ID as string,
+      clientSecret: process.env.APPLE_SECRET as string,
     }),
     FacebookProvider({
-      clientId: process.env.FACEBOOK_ID,
-      clientSecret: process.env.FACEBOOK_SECRET
+      clientId: process.env.FACEBOOK_ID as string,
+      clientSecret: process.env.FACEBOOK_SECRET as string,
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID as string,
