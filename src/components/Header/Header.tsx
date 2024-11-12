@@ -125,8 +125,11 @@ const Header = () => {
               </Button>
             ))}
           </Box>
+          <Box sx={{paddingRight: 5}}>
+            <Typography>Signed in as {session?.user?.email}</Typography>
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Open Profile Settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt={session?.user?.name as string} src={userProfileImg} />
               </IconButton>
