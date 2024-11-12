@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useSession} from "next-auth/react";
+import {signIn, signOut, useSession} from "next-auth/react";
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -147,11 +147,9 @@ const Header = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+              <MenuItem onClick={() => session ? signOut() : signIn() }>
+                  <Typography sx={{ textAlign: 'center' }}>{session ? 'Logout' : 'Login'}</Typography>
                 </MenuItem>
-              ))}
             </Menu>
           </Box>
         </Toolbar>
