@@ -44,7 +44,7 @@ const Header = (props: HeaderProps) => {
     setAnchorElUser(null);
   };
 
-  const tabletCheck = useMediaQuery(queryinput: '(min-width: 768px)');
+  const tabletCheck = useMediaQuery('(min-width: 768px)');
 
   return (
     <AppBar position="static">

@@ -6,12 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.6",
+    "@mui/material": "^6.1.7",
+    "@mui/system": "^6.1.7",
     "next": "15.0.3",
     "next-auth": "^4.24.10",
     "nodemailer": "^6.9.16",
@@ -20,12 +23,23 @@
     "sass": "^1.80.7"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "3.2.2",
     "@mui/icons-material": "^6.1.6",
+    "@storybook/addon-essentials": "8.4.4",
+    "@storybook/addon-interactions": "8.4.4",
+    "@storybook/addon-onboarding": "8.4.4",
+    "@storybook/blocks": "8.4.4",
+    "@storybook/nextjs": "8.4.4",
+    "@storybook/react": "8.4.4",
+    "@storybook/test": "8.4.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
+    "eslint-plugin-storybook": "^0.11.0",
+    "storybook": "8.4.4",
+    "storybook-dark-mode": "^4.0.2",
     "typescript": "^5"
   }
 }
