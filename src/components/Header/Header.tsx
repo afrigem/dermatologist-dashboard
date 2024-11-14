@@ -13,11 +13,17 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {signIn, signOut, useSession} from "next-auth/react";
+import ThemeToggleButton from '../ThemeToggleButton';
+import { useMediaQuery } from '@mui/material';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Appointments', 'Income' , 'Analytics', 'Blog'];
 
-const Header = () => {
+export type HeaderProps = {
+  ColorModeContext: React.Context<{ toggleColorMode: () => void; }>,
+}
+
+const Header = (props: HeaderProps) => {
+    const {ColorModeContext} = props;
     const { data: session } = useSession();
     const userProfileImg = session?.user?.image as string;
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -37,6 +43,8 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const tabletCheck = useMediaQuery(queryinput: '(min-width: 768px)');
 
   return (
     <AppBar position="static">
@@ -58,7 +66,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Afrigem
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -100,7 +108,7 @@ const Header = () => {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="Dermatologist's Dashboard"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -112,7 +120,7 @@ const Header = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Afrigem
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -125,9 +133,14 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{paddingRight: 5}}>
-            <Typography>Signed in as {session?.user?.email}</Typography>
-          </Box>
+          {
+            tabletCheck && (
+              <Box sx={{paddingRight: 5}}>
+                <Typography>Signed in as {session?.user?.email}</Typography>
+              </Box>
+            )
+          }         
+          <ThemeToggleButton ColorModeContext={ColorModeContext}/>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open Profile Settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
