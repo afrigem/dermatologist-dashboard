@@ -18,6 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Drawer from '@mui/material/Drawer';
 
 const drawerWidth = 240;
 
@@ -42,32 +43,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-}));
-
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
-      width: drawerWidth,
-      flexShrink: 0,
-      whiteSpace: 'nowrap',
-      boxSizing: 'border-box',
-      ...(open && {
-        ...openedMixin(theme),
-        '& .MuiDrawer-paper': openedMixin(theme),
-      }),
-      ...(!open && {
-        ...closedMixin(theme),
-        '& .MuiDrawer-paper': closedMixin(theme),
-    }),
-})
-);
-
 const SideMenu = () => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -81,12 +56,26 @@ const SideMenu = () => {
     };
     
     return (
-        <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
+        <Drawer variant="permanent" open={open} sx={{
+            width: drawerWidth,
+            flexShrink: 0,
+            whiteSpace: 'nowrap',
+            boxSizing: 'border-box',
+            ...(open && {
+                ...openedMixin(theme),
+                '& .MuiDrawer-paper': openedMixin(theme),
+            }),
+            ...(!open && {
+                ...closedMixin(theme),
+                '& .MuiDrawer-paper': closedMixin(theme),
+            }),
+        }}
+    >
+        <div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
-        </DrawerHeader>
+        </div>
         <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
