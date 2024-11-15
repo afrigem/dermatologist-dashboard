@@ -19,6 +19,17 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Drawer from '@mui/material/Drawer';
+import { useMediaQuery } from '@mui/system';
+import BookIcon from '@mui/icons-material/Book';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import Person2Icon from '@mui/icons-material/Person2';
+import HomeIcon from '@mui/icons-material/Home';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import NextLink from "next/link";
+import scss from "./SideMenu.module.scss";
+import { signOut } from 'next-auth/react';
+
 
 const drawerWidth = 240;
 
@@ -43,96 +54,71 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
+const menuRouteList = ["appointments", "revenue", "profile", "settings", ""];
+const menuListTranslation = ["Appointments", "Revenue", "Profile", "Settings", "Sign Out"];
+const menuListIcons = [
+    <BookIcon />,
+    <MonetizationOnIcon />,
+    <Person2Icon />,
+    <SettingsIcon />,
+    <ExitToAppIcon />,
+];
 const SideMenu = () => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const mobileCheck = useMediaQuery('(min-width: 600px)');
     
-    const handleDrawerOpen = () => {
-        setOpen(true);
+    const handleDrawerToggle = () => {
+        setOpen(!open);
     };
-    
-    const handleDrawerClose = () => {
+
+    const handleListItemButtonClick = (text: string) => {
+        text === "Sign Out" ? signOut() : null;
         setOpen(false);
     };
     
     return (
-        <Drawer variant="permanent" open={open} sx={{
+        <Drawer
+            variant="permanent"
+            anchor="left"
+            open={open}
+            sx={{
             width: drawerWidth,
-            flexShrink: 0,
-            whiteSpace: 'nowrap',
-            boxSizing: 'border-box',
-            ...(open && {
-                ...openedMixin(theme),
-                '& .MuiDrawer-paper': openedMixin(theme),
-            }),
-            ...(!open && {
-                ...closedMixin(theme),
-                '& .MuiDrawer-paper': closedMixin(theme),
-            }),
+            [`& .MuiDrawer-paper`]: {
+                left: 0,
+                top: mobileCheck ? 64 : 57,
+                flexShrink: 0,
+                whiteSpace: 'nowrap',
+                boxSizing: 'border-box',
+                ...(open && {
+                    ...openedMixin(theme),
+                    '& .MuiDrawer-paper': openedMixin(theme),
+                }),
+                ...(!open && {
+                    ...closedMixin(theme),
+                    '& .MuiDrawer-paper': closedMixin(theme),
+                }),
+            },
         }}
     >
-        <div>
-          <IconButton onClick={handleDrawerClose}>
+        <div className={scss.drawerHeader}>
+          <IconButton onClick={handleDrawerToggle}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={[
-                  {
-                    minHeight: 48,
-                    px: 2.5,
-                  },
-                  open
-                    ? {
-                        justifyContent: 'initial',
-                      }
-                    : {
-                        justifyContent: 'center',
-                      },
-                ]}
-              >
-                <ListItemIcon
-                  sx={[
-                    {
-                      minWidth: 0,
-                      justifyContent: 'center',
-                    },
-                    open
-                      ? {
-                          mr: 3,
-                        }
-                      : {
-                          mr: 'auto',
-                        },
-                  ]}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText
-                  primary={text}
-                  sx={[
-                    open
-                      ? {
-                          opacity: 1,
-                        }
-                      : {
-                          opacity: 0,
-                        },
-                  ]}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {menuListTranslation.map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                <NextLink
+                    className={scss.link}
+                    href={`/dashboard/${menuRouteList[index]}`}
+                >
               <ListItemButton
+                onClick={() => handleListItemButtonClick(text)}
+                title={text}
+                aria-label={text}
                 sx={[
                   {
                     minHeight: 48,
@@ -162,21 +148,17 @@ const SideMenu = () => {
                         },
                   ]}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {menuListIcons[index]}
                 </ListItemIcon>
                 <ListItemText
                   primary={text}
-                  sx={[
-                    open
-                      ? {
-                          opacity: 1,
-                        }
-                      : {
-                          opacity: 0,
-                        },
-                  ]}
-                />
+                  sx={{
+                    color: theme.palette.text.primary,
+                    opacity: open ? 1 : 0,
+                }}
+                />{""}
               </ListItemButton>
+              </NextLink>
             </ListItem>
           ))}
         </List>
