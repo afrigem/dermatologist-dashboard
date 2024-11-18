@@ -22,7 +22,7 @@ const DataCard = (props: DataCardProps) => {
                 title={
                     <Typography
                     fontSize={16}
-                    >{`${description} which iks ${value}`}</Typography>
+                    >{`${description} ${value}`}</Typography>
                 }
             >
                 <IconButton>
