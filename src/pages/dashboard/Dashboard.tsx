@@ -1,6 +1,5 @@
-import { Box, Grid, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
-import scss from './Dashboard.module.scss';
 import DataRibbon from "@/components/Dashboard/DataRibbon";
 
 const Dashboard = () => {

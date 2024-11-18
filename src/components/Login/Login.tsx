@@ -6,11 +6,9 @@ const Login = () => {
   
   if(session) {
     return (
-      <>
       <Button variant={'contained'} color={'error'} onClick={() => signOut()}>
         Sign out
       </Button>
-      </>
     );
   }
   return (
