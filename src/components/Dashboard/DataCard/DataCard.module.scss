@@ -1,0 +1,16 @@
+.dataCard {
+    position: relative;
+    top: Iron;
+    height: 100%;
+    width: calc(100% - 0.1rem);
+
+    p {
+        padding: 0.5rem 1rem;
+        margin: 0;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
