@@ -11,7 +11,7 @@ const DataRibbon = () => {
                     title={"Total Consultations"}
                     value={"50"}
                     description={
-                        "Total virtual consultations this month"}
+                        "Total virtual consultations this month are"}
                 />
             </Grid>
             <Grid>
@@ -19,7 +19,7 @@ const DataRibbon = () => {
                     title={"Upcoming consultations"}
                     value={"5"}
                     description={
-                        "Total virtual consultations upcoming"}
+                        "Upcoming virtual consultations are"}
                 />
             </Grid>
             <Grid>
@@ -27,7 +27,7 @@ const DataRibbon = () => {
                     title={"Income"}
                     value={"$ 300.00"}
                     description={
-                        "The Total Revenue made this month"}
+                        "The Total Revenue made this month is"}
                 />
             </Grid>
             <Grid>
