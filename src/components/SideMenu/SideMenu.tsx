@@ -54,9 +54,10 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-const menuRouteList = ["appointments", "revenue", "profile", "settings", ""];
-const menuListTranslation = ["Appointments", "Revenue", "Profile", "Settings", "Sign Out"];
+const menuRouteList = ["", "appointments", "revenue", "profile", "settings", ""];
+const menuListTranslation = ["Home", "Appointments", "Revenue", "Profile", "Settings", "Sign Out"];
 const menuListIcons = [
+    <HomeIcon />,
     <BookIcon />,
     <MonetizationOnIcon />,
     <Person2Icon />,
