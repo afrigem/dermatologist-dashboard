@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import * as React from "react";
 import { useDemoData } from "@mui/x-data-grid-generator";
 
+
 const Appointments = () => {
     const { data } = useDemoData({
         dataSet: "Commodity",
