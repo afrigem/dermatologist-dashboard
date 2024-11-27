@@ -22,7 +22,9 @@ const Layout = (props: any) => {
                 style={{ padding: session ? "0 24px 0 80px" : 0 }}
             >
                 {session && <SideMenu />}
-                {props.children}
+                <div className={scss.content}>
+                    {props.children}
+                </div>
                 <Footer />
         </main>
         </>

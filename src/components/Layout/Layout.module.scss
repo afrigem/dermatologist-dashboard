@@ -1,8 +1,16 @@
 .layout {
-    max-width: 85rem;
-    margin: auto;
+    display: flex;          /* Enables flexbox layout */
+    flex-direction: column; /* Ensures children are stacked vertically */
+    min-height: 100vh;      /* Forces the layout to fill the viewport height */
+    max-width: 85rem;       /* Keeps your original width settings */
+    margin: auto;           /* Centers the layout horizontally */
 
     @media screen and (min-width: 1700px) {
         max-width: 92rem;
     }
+}
+
+.content {
+    flex: 1;                /* Allows the main content to grow and push the footer down */
+    padding: 0 24px;        /* Optional padding for content */
 }

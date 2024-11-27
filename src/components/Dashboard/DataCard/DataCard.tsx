@@ -16,7 +16,7 @@ const DataCard = (props: DataCardProps) => {
         <Paper className={scss.dataCard}>
             <div className={scss.header}>
                 <Typography fontSize={"h6"} color={"lightslategrey"}>
-                    title
+                    {title}
                 </Typography>
                 <Tooltip
                 title={
