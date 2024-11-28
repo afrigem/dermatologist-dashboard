@@ -1,50 +1,48 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import {signIn, signOut, useSession} from "next-auth/react";
-import ThemeToggleButton from '../ThemeToggleButton';
-import { useMediaQuery } from '@mui/material';
+import Image from 'next/image';
+import {
+  AppBar, Box, Toolbar, IconButton, Typography,
+  Menu, Container, Avatar, Tooltip, MenuItem, useMediaQuery
+} from '@mui/material';
+import { signIn, signOut, useSession } from "next-auth/react";
 import NextLink from "next/link";
+import ThemeToggleButton from '../ThemeToggleButton';
 import { useTheme } from '@mui/system';
 
 export type HeaderProps = {
-  ColorModeContext: React.Context<{ toggleColorMode: () => void; }>,
+  ColorModeContext: React.Context<{ toggleColorMode: () => void }>,
 };
 
-const Header = (props: HeaderProps) => {
-  const {ColorModeContext} = props;
+const Header = ({ ColorModeContext }: HeaderProps) => {
   const { data: session } = useSession();
   const theme = useTheme();
-  const userProfileImg = session?.user?.image as string;
-  
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const tabletCheck = useMediaQuery('(min-width: 768px)');
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const handleCloseUserMenu = () => setAnchorElUser(null);
 
-  const tabletCheck = useMediaQuery('(min-width: 768px)');
+  const userName = session?.user?.name || "Guest";
+  const userImage = session?.user?.image || "/default-avatar.png";
 
   return (
-    <AppBar position="static" sx={{ marginBottom: "40px" }}>
+    <AppBar position="static" sx={{ mb: 4 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* Logo */}
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
+            <Image 
+              src="/afrigem-logo.png" 
+              alt="Afrigem Logo" 
+              width={40} 
+              height={40} 
+              priority 
+            />
+          </Box>
+          {/* Branding */}
           <Typography
             variant="h6"
             noWrap
@@ -56,18 +54,26 @@ const Header = (props: HeaderProps) => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#FFB6C1', // Pastel Pink
               textDecoration: 'none',
             }}
           >
             Afrigem
           </Typography>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}>
+            <Image 
+              src="/afrigem-logo.png" 
+              alt="Afrigem Logo" 
+              width={30} 
+              height={30} 
+              priority 
+            />
+          </Box>
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -75,64 +81,57 @@ const Header = (props: HeaderProps) => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#FFB6C1', // Pastel Pink
               textDecoration: 'none',
             }}
           >
             Afrigem
           </Typography>
+
+          {/* User Email on Larger Screens */}
           {tabletCheck && (
-              <Box sx={{ paddingRight: 5, marginLeft: 'auto' }}>
-                <Typography>Signed in as {session?.user?.email}</Typography>
-              </Box>
-          )}         
-          <ThemeToggleButton ColorModeContext={ColorModeContext}/>
+            <Box sx={{ ml: 'auto', pr: 5 }}>
+              <Typography>Signed in as {session?.user?.email}</Typography>
+            </Box>
+          )}
+
+          {/* Theme Toggle Button */}
+          <ThemeToggleButton ColorModeContext={ColorModeContext} />
+
+          {/* User Avatar and Menu */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open Profile Settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                alt={session?.user?.name as string}
-                src={userProfileImg}
-                />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} aria-label="Open user menu">
+                <Avatar alt={userName} src={userImage} />
               </IconButton>
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
               keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
               <MenuItem>
                 <NextLink
-                 href={"/dashboard/profile"}
-                 style={{
-                    color: theme.palette.text.primary,
-                    textDecoration: "none",
-                 }}
+                  href="/dashboard/profile"
+                  style={{ color: theme.palette.text.primary, textDecoration: 'none' }}
                 >
                   <Typography textAlign="center">Profile</Typography>
                 </NextLink>
               </MenuItem>
-              <MenuItem onClick={() => session ? signOut() : signIn() }>
-                  <Typography sx={{ textAlign: 'center' }}>
-                    {session ? 'Logout' : 'Login'}
-                  </Typography>
-                </MenuItem>
+              <MenuItem onClick={() => (session ? signOut() : signIn())}>
+                <Typography textAlign="center">{session ? 'Logout' : 'Login'}</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
-}
+};
+
 export default Header;
