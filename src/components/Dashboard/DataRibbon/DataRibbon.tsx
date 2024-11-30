@@ -25,7 +25,7 @@ const DataRibbon = () => {
             <Grid>
                 <DataCard
                     title={"Income (p/m)"}
-                    value={"$ 900.00"}
+                    value={"$ 30.51"}
                     description={
                         "The Total Revenue made this month is"}
                 />

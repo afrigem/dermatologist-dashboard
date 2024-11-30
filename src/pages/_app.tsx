@@ -1,7 +1,6 @@
 import { SessionProvider } from "next-auth/react";
-import { createTheme, CssBaseline, IconButton, ThemeProvider, useTheme } from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider, useTheme } from "@mui/material";
 import React, { useState, useMemo, useContext } from "react";
-import Box from "@mui/material/Box";
 import lightTheme from "@/theme/lightTheme";
 import darkTheme from "@/theme/darkTheme";
 import Header from "@/components/Header";

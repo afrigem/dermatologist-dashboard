@@ -1,5 +1,4 @@
-import { IconButton, Paper, Typography } from "@mui/material";
-import { Tooltip } from "@mui/material";
+import { IconButton, Paper, Typography , Tooltip } from "@mui/material";
 import React from "react";
 import scss from './DataCard.module.scss';
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -15,7 +14,7 @@ const DataCard = (props: DataCardProps) => {
     return (
         <Paper className={scss.dataCard}>
             <div className={scss.header}>
-                <Typography fontSize={"h6"} color={"lightslategrey"}>
+                <Typography fontSize={"h6"} color={"lightslategrey"} fontWeight={"bold"}>
                     {title}
                 </Typography>
                 <Tooltip

@@ -51,9 +51,9 @@ const Header = ({ ColorModeContext }: HeaderProps) => {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'default',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '0rem',
               color: '#FFB6C1', // Pastel Pink
               textDecoration: 'none',
             }}
@@ -78,9 +78,9 @@ const Header = ({ ColorModeContext }: HeaderProps) => {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'default',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '0rem',
               color: '#FFB6C1', // Pastel Pink
               textDecoration: 'none',
             }}

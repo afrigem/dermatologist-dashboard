@@ -4,7 +4,7 @@ const lightTheme: ThemeOptions = {
     palette: {
         mode: 'light',
         primary: {
-            main: '#ffbb00',
+            main: '#ffc0cb',
         },
         secondary: {
             main: '#ff8400',

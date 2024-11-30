@@ -12,11 +12,9 @@ const Login = () => {
     );
   }
   return (
-    <>
-      <Button variant={'contained'} color={'success'} onClick={() => signIn()}>
+    <Button variant={'contained'} color={'success'} onClick={() => signIn()}>
         Sign in
       </Button>
-    </>
   );
 };
 

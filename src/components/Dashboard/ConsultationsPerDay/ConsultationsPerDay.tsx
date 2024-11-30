@@ -19,40 +19,52 @@ const ConsultationsPerDay = () => {
         <Grid container gap={2} className={scss.wrapper}>
             <Paper className={scss.consultations}>
                 <div className={scss.chart}>
-                    <Typography>Consultations Per Year</Typography>
+                    <Typography>Annual Consultations</Typography>
                     <DataChart type={"line"} data={lineChartData} />
                 </div>
                 <div className={scss.cardWrapper}>
                     <Card className={scss.card} variant={"outlined"}>
                         <div className={scss.cardTitle}>
-                            <Typography>Total Consultations</Typography>
+                            <Typography fontWeight={"bold"}>
+                                Total Annual Consultations
+                            </Typography>
                         </div>
                         <div className={scss.cardValue}>
-                            <Typography>1.275</Typography>
+                            <Typography color={"lightslategrey"} fontWeight={"bold"}>
+                                784
+                            </Typography>
                             <Typography color={theme.palette.success.main} fontSize={14}>
-                                428.7%
+                                97.5%
                             </Typography>
                         </div>
                     </Card>
                     <Card className={scss.card} variant={"outlined"}>
                         <div className={scss.cardTitle}>
-                            <Typography>Buy-to-detail</Typography>
+                            <Typography fontWeight={"bold"}>
+                                Total Consultation Revenue p.a.
+                            </Typography>
                         </div>
                         <div className={scss.cardValue}>
-                            <Typography>4.40%</Typography>
+                            <Typography color={"lightslategrey"} fontWeight={"bold"}>
+                                $ 797.33
+                            </Typography>
                             <Typography color={theme.palette.success.main} fontSize={14}>
-                                899.4%
+                                97.5%
                             </Typography>
                         </div>
                     </Card>
                     <Card className={scss.card} variant={"outlined"}>
                         <div className={scss.cardTitle}>
-                            <Typography>Refunds</Typography>
+                            <Typography fontWeight={"bold"}>
+                                Cancelled Consultations & Value p.a.
+                            </Typography>
                         </div>
                         <div className={scss.cardValue}>
-                            <Typography>0</Typography>
-                            <Typography color={theme.palette.success.main} fontSize={14}>
-                                0
+                            <Typography color={"lightslategrey"} fontWeight={"bold"}>
+                                20
+                            </Typography>
+                            <Typography color={theme.palette.error.main} fontSize={14}>
+                                $ 20.34
                             </Typography>
                         </div>
                     </Card>
