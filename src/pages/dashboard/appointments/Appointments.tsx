@@ -3,7 +3,7 @@ import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid";
 import { Dialog, DialogTitle, DialogActions, DialogContent, Button, TextField } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { CalendarPicker } from "@mui/x-date-pickers";
+import { DateCalendar } from "@mui/x-date-pickers";
 import styles from "./Appointments.module.scss";
 
 const Appointments: React.FC = () => {
@@ -91,8 +91,8 @@ const Appointments: React.FC = () => {
         <Dialog open={openRescheduleDialog} onClose={() => setOpenRescheduleDialog(false)}>
           <DialogTitle>Reschedule Appointment</DialogTitle>
           <DialogContent>
-            <CalendarPicker
-              date={selectedDate}
+            <DateCalendar
+              value={selectedDate}
               onChange={(date: React.SetStateAction<Date | null>) => setSelectedDate(date)}
               disablePast
             />
