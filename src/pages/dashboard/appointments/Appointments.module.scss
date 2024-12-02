@@ -1,84 +1,101 @@
 .appointmentsContainer {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f9f9f9;
-    min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff; /* Ensure a light background for better contrast */
+  color: #333; /* Set a dark text color for readability */
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333; /* Dark gray color for the title */
+  margin-bottom: 1.5rem;
+}
+
+.gridWrapper {
+  width: 100%;
+  max-width: 1200px;
+  background: #f9f9f9; /* Slightly lighter background for better contrast */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+
+  .MuiDataGrid-root {
+      background-color: #ffffff; /* Ensure a clear white background for the grid */
+      color: #333; /* Dark color for text in the DataGrid */
+      font-size: 0.9rem;
   }
-  
-  .title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 1.5rem;
-  }
-  
-  .gridWrapper {
-    width: 100%;
-    max-width: 1200px;
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-  }
-  
-  .actionButtons {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .rescheduleButton,
-  .cancelButton {
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .rescheduleButton {
-    background-color: #007bff;
-    color: #fff;
-  
-    &:hover {
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rescheduleButton,
+.cancelButton {
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.rescheduleButton {
+  background-color: #007bff;
+  color: #fff;
+
+  &:hover {
       background-color: #0056b3;
-    }
-  
-    &:disabled {
+  }
+
+  &:disabled {
       background-color: #d6e9ff;
       cursor: not-allowed;
-    }
   }
-  
-  .cancelButton {
-    background-color: #dc3545;
-    color: #fff;
-  
-    &:hover {
+}
+
+.cancelButton {
+  background-color: #dc3545;
+  color: #fff;
+
+  &:hover {
       background-color: #a71d2a;
-    }
-  
-    &:disabled {
+  }
+
+  &:disabled {
       background-color: #f8d7da;
       cursor: not-allowed;
-    }
   }
-  
-  .dialogContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+}
+
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  color: #333; /* Ensure dialog content has readable text color */
+}
+
+.calendar {
+  margin: 1rem auto;
+
+  .MuiPickersCalendarHeader-root {
+      color: #333; /* Ensure calendar header is readable */
   }
-  
-  .calendar {
-    margin: 1rem auto;
+
+  .MuiDayPicker-day {
+      color: #333; /* Ensure day numbers are visible */
   }
-  
-  .textField {
-    width: 100%;
-  }
-    
+}
+
+.textField {
+  width: 100%;
+  color: #333; /* Set text field text color */
+}
