@@ -11,9 +11,8 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import { LocalizationProvider, DateCalendar } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { DateCalendar } from "@mui/x-date-pickers";
 
 const Appointments: React.FC = () => {
   const theme = useTheme();
@@ -69,14 +68,14 @@ const Appointments: React.FC = () => {
       renderCell: (params) => (
         <Box display="flex" gap={1}>
           <Button
-            variant="outlined"
+            variant="contained"
             color="primary"
             onClick={() => handleReschedule(params.row)}
           >
             Reschedule
           </Button>
           <Button
-            variant="outlined"
+            variant="contained"
             color="error"
             onClick={() => handleCancel(params.row)}
           >

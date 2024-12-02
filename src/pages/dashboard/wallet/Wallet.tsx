@@ -43,7 +43,7 @@ const Wallet: React.FC = () => {
       head: [["Client ID", "Client Name", "Consultation Date", "Consultation Status", "Payment Status", "Payment Date", "Amount"]],
       body: data,
     });
-    doc.save("earnings.pdf");
+    doc.save(`earnings.pdf`);
   };
 
   const handleRequestWithdrawal = () => {
@@ -103,10 +103,10 @@ const Wallet: React.FC = () => {
       <div className={styles.tableContainer}>
         <DataGrid rows={rows} columns={columns} pageSize={5} rowsPerPageOptions={[5]} checkboxSelection />
         <div className={styles.exportButtons}>
-          <Button variant="outlined" onClick={handleExportCSV}>
+          <Button variant="contained" onClick={handleExportCSV}>
             Export CSV
           </Button>
-          <Button variant="outlined" onClick={handleExportPDF}>
+          <Button variant="contained" onClick={handleExportPDF}>
             Export PDF
           </Button>
         </div>
