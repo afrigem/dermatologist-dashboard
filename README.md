@@ -1,40 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+Dermatologist's Dashboard
+This project is a Dermatologist's Dashboard built using Next.js, Material-UI (MUI), and TypeScript. The dashboard provides an intuitive interface to manage appointments, payments, and more, tailored to streamline the daily tasks of dermatology professionals.
 
-## Getting Started
+Technologies Used
+Next.js: A React framework for building fast, scalable, and SEO-friendly web applications.
+Material-UI (MUI): A library for designing user interfaces with pre-built React components.
+TypeScript: A strongly typed programming language that builds on JavaScript to provide static typing and enhanced tooling.
+React: For building the UI components of the dashboard.
+Axios: For handling API requests.
+SCSS (optional): For additional styling if used alongside MUI.
+ESLint & Prettier: For maintaining code quality and consistent formatting.
+Features
+Appointment Scheduling: View and manage dermatologist appointment slots.
+Dashboard Analytics: Overview of key metrics like the number of consultations, upcoming appointments, and revenue insights.
+Responsive Design: Optimized for both desktop and mobile views.
+Role-based Access: Manage permissions for different types of users (e.g., admin, dermatologist)
+Installation and Setup
+Prerequisites
+Make sure you have the following installed:
 
-First, run the development server:
+Node.js (version 16.x or later)
+npm or yarn package manager
+Git for cloning the repository
+Steps to Run Locally
+Clone the Repository
 
-```bash
+bash
+Copy code
+git clone https://github.com/afrigem/dermatologist-dashboard.git
+cd dermatologist-dashboard
+Install Dependencies
+
+Using npm:
+
+bash
+Copy code
+npm install
+Or using yarn:
+
+bash
+Copy code
+yarn install
+Set Up Environment Variables
+
+Create a .env.local file in the root directory with the following variables:
+
+plaintext
+Copy code
+# Google credentials
+GOOGLE_ID=your-google-console-id
+GOOGLE_SECRET=your-google-console-secret
+
+# Next Auth
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=MgiGbfFlABWT/LTNM6bUcYiU0hWPQAwoptgpGHzUWYI=
+Adjust the variables based on the project's requirements.
+
+Run the Development Server
+
+Using npm:
+
+bash
+Copy code
 npm run dev
-# or
+Or using yarn:
+
+bash
+Copy code
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The application will be accessible at http://localhost:3000.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build for Production (optional)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+bash
+Copy code
+npm run build
+npm start
+Folder Structure
+plaintext
+Copy code
+├── src/               # Reusable React components
+├── styles/            # Global and component-specific styles
+├── utils/             # Utility functions and helpers
+├── public/            # Static files like images and icons
+├── .eslintrc.json     # ESLint configuration
+├── tsconfig.json      # TypeScript configuration
+├── package.json       # Project metadata and dependencies
+Key Functionalities
+Dashboard Overview
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Displays key statistics like total consultations, pending appointments, and revenue charts.
+Appointment Management
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+Allows CRUD operations for appointment data.
+Includes search and filter functionality.
+Appointment Scheduler
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Calendar view for scheduling and managing appointments.
+Automatic reminders for upcoming appointments.
+Secure Login
 
-## Learn More
+Role-based access to the dashboard features.
+Theme Customization
 
-To learn more about Next.js, take a look at the following resources:
+Built-in dark mode and light mode toggle.
+Deployment
+This project can be deployed to any hosting platform that supports Next.js, such as:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Vercel: Optimized for Next.js.
+Netlify: Supports serverless functions.
+AWS Amplify: Scalable deployment for web applications.
+To deploy using Vercel:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Push the repository to GitHub or GitLab.
+Log in to Vercel and link your repository.
+Adjust environment variables in the Vercel dashboard.
+Deploy the project.
+Contributing
+Fork the repository.
+Create a feature branch: git checkout -b feature-name.
+Commit your changes: git commit -m 'Add feature'.
+Push to the branch: git push origin feature-name.
+Open a pull request.
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
